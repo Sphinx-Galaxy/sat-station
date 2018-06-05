@@ -1,0 +1,346 @@
+# depslib dependency file v1.0
+1514296826 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/main.cpp
+	<iostream>
+	"m_file_handler.h"
+	"m_wxxer.h"
+	"m_satellite.h"
+	"m_recorder.h"
+	<unistd.h>
+	<stdio.h>
+	<stdlib.h>
+	"Observer.h"
+	"SGP4.h"
+	"Util.h"
+	"CoordTopocentric.h"
+	"CoordGeodetic.h"
+
+1511472727 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/m_file_handler.cpp
+	"m_file_handler.h"
+	<dirent.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<string>
+	<stdint.h>
+	<sys/stat.h>
+	<time.h>
+
+1510687369 /home/mattis/Seafile/Workspace/Cpp/sat_recorder/include/m_file_handler.h
+
+1514297098 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/m_wxxer.cpp
+	"m_wxxer.h"
+	"m_file_handler.h"
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+
+1510687022 /home/mattis/Seafile/Workspace/Cpp/sat_recorder/include/m_wxxer.h
+
+1514295742 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/m_satellite.cpp
+	"m_satellite.h"
+	"Observer.h"
+	"Util.h"
+	"SGP4.h"
+	"CoordTopocentric.h"
+	"CoordGeodetic.h"
+	<float.h>
+	<cmath>
+	<list>
+
+1511472727 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/src/m_file_handler.cpp
+	"m_file_handler.h"
+	<dirent.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<string>
+	<stdint.h>
+	<sys/stat.h>
+	<time.h>
+
+1512049915 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/src/m_satellite.cpp
+	"m_satellite.h"
+	"Observer.h"
+	"Util.h"
+	"SGP4.h"
+	"CoordTopocentric.h"
+	"CoordGeodetic.h"
+	<cmath>
+	<list>
+
+1511971420 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/src/m_wxxer.cpp
+	"m_wxxer.h"
+	"m_file_handler.h"
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+
+1512050402 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/main.cpp
+	<iostream>
+	"m_file_handler.h"
+	"m_wxxer.h"
+	"m_satellite.h"
+	<stdio.h>
+	"Observer.h"
+	"SGP4.h"
+	"Util.h"
+	"CoordTopocentric.h"
+	"CoordGeodetic.h"
+
+1512044453 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/src/CoordGeodetic.cpp
+	"CoordGeodetic.h"
+
+1512044453 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/src/CoordTopocentric.cpp
+	"CoordTopocentric.h"
+
+1512044453 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/src/DateTime.cpp
+	"DateTime.h"
+
+1512044453 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/src/DecayedException.cpp
+	"DecayedException.h"
+
+1512044453 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/src/Eci.cpp
+	"Eci.h"
+	"Globals.h"
+	"Util.h"
+
+1512044453 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/src/Globals.cpp
+	"Globals.h"
+
+1512045688 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/src/m_recorder.cpp
+	"m_recorder.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1512044453 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/src/Observer.cpp
+	"Observer.h"
+	"CoordTopocentric.h"
+
+1512044453 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/src/OrbitalElements.cpp
+	"OrbitalElements.h"
+	"Tle.h"
+
+1512044453 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/src/SatelliteException.cpp
+	"SatelliteException.h"
+
+1512044453 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/src/SGP4.cpp
+	"SGP4.h"
+	"Util.h"
+	"Vector.h"
+	"SatelliteException.h"
+	"DecayedException.h"
+	<cmath>
+	<iomanip>
+
+1512044453 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/src/SolarPosition.cpp
+	"SolarPosition.h"
+	"Globals.h"
+	"Util.h"
+	<cmath>
+
+1512044453 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/src/TimeSpan.cpp
+	"TimeSpan.h"
+
+1512044453 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/src/Tle.cpp
+	"Tle.h"
+	<locale>
+
+1512044453 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/src/TleException.cpp
+	"TleException.h"
+
+1512044453 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/src/Util.cpp
+	"Util.h"
+	<algorithm>
+	<locale>
+	<functional>
+
+1512044453 source:/home/foobar/Seafile/Workspace/Cpp/sat_recorder/src/Vector.cpp
+	"Vector.h"
+
+1514296039 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/main.cpp
+	<iostream>
+	"m_file_handler.h"
+	"m_wxxer.h"
+	"m_satellite.h"
+	"m_recorder.h"
+	<unistd.h>
+	<stdio.h>
+	<stdlib.h>
+	"Observer.h"
+	"SGP4.h"
+	"Util.h"
+	"CoordTopocentric.h"
+	"CoordGeodetic.h"
+
+1512044453 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/src/CoordGeodetic.cpp
+	"CoordGeodetic.h"
+
+1512044453 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/src/CoordTopocentric.cpp
+	"CoordTopocentric.h"
+
+1512044453 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/src/DateTime.cpp
+	"DateTime.h"
+
+1512044453 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/src/DecayedException.cpp
+	"DecayedException.h"
+
+1512044453 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/src/Eci.cpp
+	"Eci.h"
+	"Globals.h"
+	"Util.h"
+
+1512044453 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/src/Globals.cpp
+	"Globals.h"
+
+1511472727 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/src/m_file_handler.cpp
+	"m_file_handler.h"
+	<dirent.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<string>
+	<stdint.h>
+	<sys/stat.h>
+	<time.h>
+
+1514295996 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/src/m_recorder.cpp
+	"m_recorder.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1514296747 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/src/m_wxxer.cpp
+	"m_wxxer.h"
+	"m_file_handler.h"
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+
+1512044453 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/src/Observer.cpp
+	"Observer.h"
+	"CoordTopocentric.h"
+
+1512044453 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/src/OrbitalElements.cpp
+	"OrbitalElements.h"
+	"Tle.h"
+
+1512044453 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/src/SatelliteException.cpp
+	"SatelliteException.h"
+
+1512044453 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/src/SGP4.cpp
+	"SGP4.h"
+	"Util.h"
+	"Vector.h"
+	"SatelliteException.h"
+	"DecayedException.h"
+	<cmath>
+	<iomanip>
+
+1512044453 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/src/SolarPosition.cpp
+	"SolarPosition.h"
+	"Globals.h"
+	"Util.h"
+	<cmath>
+
+1512044453 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/src/TimeSpan.cpp
+	"TimeSpan.h"
+
+1512044453 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/src/Tle.cpp
+	"Tle.h"
+	<locale>
+
+1512044453 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/src/TleException.cpp
+	"TleException.h"
+
+1512044453 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/src/Util.cpp
+	"Util.h"
+	<algorithm>
+	<locale>
+	<functional>
+
+1512044453 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/src/Vector.cpp
+	"Vector.h"
+
+1514295742 source:/mnt/private/Seafile/Workspace/Cpp/sat_recorder/src/m_satellite.cpp
+	"m_satellite.h"
+	"Observer.h"
+	"Util.h"
+	"SGP4.h"
+	"CoordTopocentric.h"
+	"CoordGeodetic.h"
+	<float.h>
+	<cmath>
+	<list>
+
+1512044453 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/CoordGeodetic.cpp
+	"CoordGeodetic.h"
+
+1512044453 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/CoordTopocentric.cpp
+	"CoordTopocentric.h"
+
+1512044453 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/DateTime.cpp
+	"DateTime.h"
+
+1512044453 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/DecayedException.cpp
+	"DecayedException.h"
+
+1512044453 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/Eci.cpp
+	"Eci.h"
+	"Globals.h"
+	"Util.h"
+
+1512044453 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/Globals.cpp
+	"Globals.h"
+
+1514295996 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/m_recorder.cpp
+	"m_recorder.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1512044453 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/Observer.cpp
+	"Observer.h"
+	"CoordTopocentric.h"
+
+1512044453 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/OrbitalElements.cpp
+	"OrbitalElements.h"
+	"Tle.h"
+
+1512044453 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/SatelliteException.cpp
+	"SatelliteException.h"
+
+1512044453 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/SGP4.cpp
+	"SGP4.h"
+	"Util.h"
+	"Vector.h"
+	"SatelliteException.h"
+	"DecayedException.h"
+	<cmath>
+	<iomanip>
+
+1512044453 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/SolarPosition.cpp
+	"SolarPosition.h"
+	"Globals.h"
+	"Util.h"
+	<cmath>
+
+1512044453 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/TimeSpan.cpp
+	"TimeSpan.h"
+
+1512044453 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/Tle.cpp
+	"Tle.h"
+	<locale>
+
+1512044453 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/TleException.cpp
+	"TleException.h"
+
+1512044453 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/Util.cpp
+	"Util.h"
+	<algorithm>
+	<locale>
+	<functional>
+
+1512044453 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/Vector.cpp
+	"Vector.h"
+
