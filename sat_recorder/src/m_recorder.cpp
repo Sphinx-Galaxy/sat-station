@@ -34,8 +34,8 @@ const bool m_recorder::record_sat() {
 	int ppm_offset = 72;
 
     //The 600 seconds of recording time could be calculated if the 'struct sat' had also the declining time or passing time
-    sprintf(system_call, "timeout %d rtl_fm -M fm -f %d -s 80000 -p %d -F 9 - | sox -t raw -r 80000 -es -b16 -c1 -V1 - %s rate 11025",
-            600, sat.frequency, ppm_offset, generate_filename());
+    sprintf(system_call, "timeout %d rtl_fm -M fm -f %d -s %d -p %d -F 9 - | sox -t raw -r %d -es -b16 -c1 -V1 - %s rate 11025",
+            600, sat.frequency, 2*sat.bandwidth, ppm_offset, 2*sat.bandwidth, generate_filename());
 
     printf("* System call: %s\n", system_call);
 

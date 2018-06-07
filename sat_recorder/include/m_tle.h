@@ -7,7 +7,7 @@
 #include "TleException.h"
 #include "Tle.h"
 
-#define NUMBER_OF_SATS 3
+#define NUMBER_OF_SATS 4
 
 /* Mach hier lieber eine Klasse daraus
 * Vielleicht sogar so, dass sie ihre eigenen Berechnungsmethoden mitbringen?
@@ -21,6 +21,7 @@ struct m_sat {
 
     char name[7];
     long frequency;
+    long bandwidth;
     DateTime next_rising_time;
     long next_rising_time_utc;
     double elevation;
@@ -32,7 +33,7 @@ static Tle noaa15_tle = {"NOAA15",
  "2 25338  98.7716 145.3665 0010119 347.7970  12.2963 14.25849988 39171"};
 
 static struct m_sat noaa15 = {&noaa15_tle,
-  "NOAA15", 137620000, 0, 0};
+  "NOAA15", 137620000, 30000, 0, 0};
 
 //NOAA 18
 static Tle noaa18_tle = {"NOAA18",
@@ -40,7 +41,7 @@ static Tle noaa18_tle = {"NOAA18",
  "2 28654  99.1487 163.5774 0013479 234.9687 125.0220 14.12374647668147"};
 
 static struct m_sat noaa18 = {&noaa18_tle,
-  "NOAA18", 137912500, 0, 0};
+  "NOAA18", 137912500, 30000, 0, 0};
 
 //NOAA 19
 static Tle noaa19_tle = {"NOAA19",
@@ -48,6 +49,16 @@ static Tle noaa19_tle = {"NOAA19",
  "2 33591  99.1392 106.1444 0015034  78.0836 282.2019 14.12276112476368"};
 
 static struct m_sat noaa19 = {&noaa19_tle,
-  "NOAA19", 137100000, 0, 0};
+  "NOAA19", 137100000, 30000, 0, 0};
+
+//NOAA 19
+static Tle meteor_tle = {"Meteor-M2",
+ "1 40069U 14037A   17300.19951363 -.00000018  00000-0  11868-4 0  9994",
+ "2 40069  98.6393 352.0282 0005276 181.7278 178.3888 14.20646288171299"};
+
+static struct m_sat meteor = {&meteor_tle,
+  "Meteor", 137100000, 150000, 0, 0};
+
+
 
 #endif // M_TLE_INCLUDED

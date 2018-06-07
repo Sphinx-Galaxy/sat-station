@@ -26,7 +26,7 @@ class m_satellite
         CoordGeodetic user_geo;
         DateTime start_time;
         struct m_sat sat_now;
-        const struct m_sat sat_list[NUMBER_OF_SATS] = {noaa15, noaa18, noaa19};
+        const struct m_sat sat_list[NUMBER_OF_SATS] = {noaa15, noaa18, noaa19, meteor};
 
 
         const DateTime calc_sat_rising_time(struct m_sat sat);
