@@ -15,6 +15,7 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="/home/mattis/Seafile/Workspace/Cpp/sat_recorder/" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -24,6 +25,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -53,6 +55,7 @@
 		<Unit filename="include/m_file_handler.h" />
 		<Unit filename="include/m_recorder.h" />
 		<Unit filename="include/m_satellite.h" />
+		<Unit filename="include/m_station.h" />
 		<Unit filename="include/m_tle">
 			<Option virtualFolder="include/" />
 		</Unit>
@@ -78,6 +81,7 @@
 		<Unit filename="src/m_file_handler.cpp" />
 		<Unit filename="src/m_recorder.cpp" />
 		<Unit filename="src/m_satellite.cpp" />
+		<Unit filename="src/m_station.cpp" />
 		<Unit filename="src/m_wxxer.cpp" />
 		<Extensions>
 			<code_completion />
