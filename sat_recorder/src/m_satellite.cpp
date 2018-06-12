@@ -12,53 +12,26 @@
 #include <cmath>
 #include <list>
 
-m_satellite::m_satellite(CoordGeodetic geo, double minimum_elevation) {
+m_satellite::m_satellite(CoordGeodetic geo, double minimum_elevation, const struct sat_config &sat_cfg) {
     this->user_geo = geo;
     this->minimum_elevation = minimum_elevation*PI/180;
+    this->sat_cfg = sat_cfg;
 }
 
 m_satellite::~m_satellite() {
     //dtor
 }
 
-const bool m_satellite::set_next_sat() {
-    time_t rawtime;
-    struct tm *tm_now;
-    struct m_sat tmp_sat;
-    unsigned int sat_number = 0;
-    DateTime rising_time(3000, 1, 1, 1, 1, 1);
-
-    time(&rawtime);
-    tm_now = gmtime(&rawtime);
-
-    start_time = DateTime::Now();
-
-    for(sat_number = 0; sat_number < NUMBER_OF_SATS; sat_number++) {
-        tmp_sat = sat_list[sat_number];
-        tmp_sat.next_rising_time = calc_sat_rising_time(tmp_sat);
-
-        if(tmp_sat.next_rising_time.Ticks() < rising_time.Ticks()) {
-            rising_time = tmp_sat.next_rising_time;
-            sat_now = tmp_sat;
-
-            tm_now->tm_year = rising_time.Year()-1900;
-            tm_now->tm_mon = rising_time.Month()-1;
-            tm_now->tm_mday = rising_time.Day();
-            tm_now->tm_hour = rising_time.Hour();
-            tm_now->tm_min = rising_time.Minute();
-            tm_now->tm_sec = rising_time.Second();
-
-            printf("* Found %s Rising Time: Y: %d M: %d D: %d HH: %d MM: %d\n",
-                   tmp_sat.name, rising_time.Year(), rising_time.Month(), rising_time.Day(), rising_time.Hour(), rising_time.Minute());
-
-            sat_now.next_rising_time_utc = mktime(tm_now)+90;
-        }
+void m_satellite::update() {
+    if(!calc_sat_rising_time())
+        aos = time(NULL);
+    else {
+        SGP4 sgp4(*(sat_cfg.tle));
+        max_elevation = find_max_elevation(sgp4, aos, los);
     }
-
-    return true;
 }
 
-const double m_satellite::FindMaxElevation(SGP4& sgp4, const DateTime& aos, const DateTime& los) {
+double m_satellite::find_max_elevation(SGP4& sgp4, const DateTime& aos, const DateTime& los) {
     Observer obs(user_geo);
     bool running = true;
     double time_step = (los - aos).TotalSeconds() / 9.0;
@@ -104,10 +77,10 @@ const double m_satellite::FindMaxElevation(SGP4& sgp4, const DateTime& aos, cons
     return max_elevation;
 }
 
-const DateTime m_satellite::calc_sat_rising_time(struct m_sat sat) {
+bool m_satellite::calc_sat_rising_time() {
 //    printf("* Calc sat %s rising time\n", sat.name);
     DateTime end_time = start_time.AddDays(3);
-    SGP4 sgp4(*(sat.tle));
+    SGP4 sgp4(*(sat_cfg.tle));
     Observer obs(user_geo);
 
     DateTime aos_time;
@@ -121,37 +94,25 @@ const DateTime m_satellite::calc_sat_rising_time(struct m_sat sat) {
 //    printf("* Starttime: Y: %d M: %d D: %d HH: %d MM: %d\n", start_time.Year(), start_time.Month(), start_time.Day(), start_time.Hour(), start_time.Minute());
 //    printf("* Endtime: Y: %d M: %d D: %d HH: %d MM: %d\n", end_time.Year(), end_time.Month(), end_time.Day(), end_time.Hour(), end_time.Minute());
 
-    while (current_time < end_time)
-    {
+    while (current_time < end_time) {
         bool end_of_pass = false;
 
-        /*
-         * calculate satellite position
-         */
+        //calculate satellite position
         Eci eci = sgp4.FindPosition(current_time);
         CoordTopocentric topo = obs.GetLookAngle(eci);
 
-        if (!found_aos && topo.elevation > 0.0)
-        {
-            /*
-             * aos hasnt occured yet, but the satellite is now above horizon
-             * this must have occured within the last time_step
-             */
-            if (start_time == current_time)
-            {
-                /*
-                 * satellite was already above the horizon at the start,
-                 * so use the start time
-                 */
+        if (!found_aos && topo.elevation > 0.0) {
+            //aos hasnt occured yet, but the satellite is now above horizon
+            //this must have occured within the last time_step
+            if (start_time == current_time) {
+                //satellite was already above the horizon at the start,
+                //so use the start time
 //                printf("* Satellite already above the horizion\n");
                 aos_time = start_time;
             }
-            else
-            {
-                /*
-                 * find the point at which the satellite crossed the horizon
-                 */
-                aos_time = FindCrossingPoint(
+            else {
+                //find the point at which the satellite crossed the horizon
+                aos_time = find_crossing_point(
                         sgp4,
                         previous_time,
                         current_time,
@@ -159,63 +120,46 @@ const DateTime m_satellite::calc_sat_rising_time(struct m_sat sat) {
             }
             found_aos = true;
         }
-        else if (found_aos && topo.elevation < 0.0)
-        {
+        else if (found_aos && topo.elevation < 0.0) {
             found_aos = false;
-            /*
-             * end of pass, so move along more than time_step
-             */
+            //end of pass, so move along more than time_step
             end_of_pass = true;
-            /*
-             * already have the aos, but now the satellite is below the horizon,
-             * so find the los
-             */
-            los_time = FindCrossingPoint(
+            // already have the aos, but now the satellite is below the horizon,
+            // so find the los
+            los_time = find_crossing_point(
                     sgp4,
                     previous_time,
                     current_time,
                     false);
 
-//            printf("* Found an Elevation: Y: %d M: %d D: %d HH: %d MM: %d\n", los_time.Year(), los_time.Month(), los_time.Day(), los_time.Hour(), los_time.Minute());
-
-            if(FindMaxElevation(sgp4, aos_time, los_time) >= minimum_elevation)
-                return aos_time;
-
-//            printf("* But not above the minimum elevation\n");
+            if(find_max_elevation(sgp4, aos_time, los_time) >= minimum_elevation) {
+                aos = aos_time;
+                los = los_time;
+                return true;
+            }
         }
 
-        /*
-         * save current time
-         */
+        //save current time
         previous_time = current_time;
 
-        if (end_of_pass)
-        {
-            /*
-             * at the end of the pass move the time along by 30mins
-             */
+        if (end_of_pass) {
+            //at the end of the pass move the time along by 30mins
             current_time = current_time + TimeSpan(0, 30, 0);
         }
-        else
-        {
-            /*
-             * move the time along by the time step value
-             */
+        else {
+            //move the time along by the time step value
             current_time = current_time + TimeSpan(0, 0, time_step);
         }
 
-        if (current_time > end_time)
-        {
-            /*
-             * dont go past end time
-             */
+        if (current_time > end_time) {
+            //dont go past end time
             current_time = end_time;
         }
-    };
-    return current_time;
+    }
+    return false;
 }
 
-const DateTime m_satellite::FindCrossingPoint(SGP4& sgp4, const DateTime& initial_time1, const DateTime& initial_time2, bool finding_aos)
+DateTime m_satellite::find_crossing_point(SGP4& sgp4, const DateTime& initial_time1, const DateTime& initial_time2, bool finding_aos)
 {
     Observer obs(user_geo);
 
@@ -228,80 +172,48 @@ const DateTime m_satellite::FindCrossingPoint(SGP4& sgp4, const DateTime& initia
 
     running = true;
     cnt = 0;
-    while (running && cnt++ < 16)
-    {
+    while (running && cnt++ < 16) {
         middle_time = time1.AddSeconds((time2 - time1).TotalSeconds() / 2.0);
-        /*
-         * calculate satellite position
-         */
+        //calculate satellite position
         Eci eci = sgp4.FindPosition(middle_time);
         CoordTopocentric topo = obs.GetLookAngle(eci);
 
-        if (topo.elevation > 0.0)
-        {
-            /*
-             * satellite above horizon
-             */
+        if (topo.elevation > 0.0) {
+            //satellite above horizon
             if (finding_aos)
-            {
                 time2 = middle_time;
-            }
             else
-            {
                 time1 = middle_time;
-            }
         }
-        else
-        {
+        else {
             if (finding_aos)
-            {
                 time1 = middle_time;
-            }
             else
-            {
                 time2 = middle_time;
-            }
         }
 
-        if ((time2 - time1).TotalSeconds() < 1.0)
-        {
-            /*
-             * two times are within a second, stop
-             */
+        if ((time2 - time1).TotalSeconds() < 1.0) {
+            //two times are within a second, stop
             running = false;
-            /*
-             * remove microseconds
-             */
+            //remove microseconds
             int us = middle_time.Microsecond();
             middle_time = middle_time.AddMicroseconds(-us);
-            /*
-             * step back into the pass by 1 second
-             */
+            //step back into the pass by 1 second
             middle_time = middle_time.AddSeconds(finding_aos ? 1 : -1);
         }
     }
 
 
-    /*
-     * go back/forward 1second until below the horizon
-     */
+    //go back/forward 1second until below the horizon
     running = true;
     cnt = 0;
-    while (running && cnt++ < 6)
-    {
+    while (running && cnt++ < 6) {
         Eci eci = sgp4.FindPosition(middle_time);
         CoordTopocentric topo = obs.GetLookAngle(eci);
         if (topo.elevation > 0)
-        {
             middle_time = middle_time.AddSeconds(finding_aos ? -1 : 1);
-        }
         else
-        {
             running = false;
-        }
     }
-
-//    printf("* Found the crossing point at: Y: %d M: %d D: %d HH: %d MM: %d\n", middle_time.Year(), middle_time.Month(), middle_time.Day(), middle_time.Hour(), middle_time.Minute());
-
     return middle_time;
 }
