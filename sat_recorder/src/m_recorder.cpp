@@ -4,42 +4,51 @@
 #include <stdlib.h>
 #include <string.h>
 
-m_recorder::m_recorder(struct m_sat sat, const char * audio_directory)
+m_recorder::m_recorder(const std::string &audio_folder, int ppm_offset, int rtl_device)
 {
-    /* IMPORTANT: structure must be copied */
-    this->sat = sat;
-
-    strcpy(this->audio_directory, audio_directory);
+    this->rtl_device = rtl_device;
+    this->ppm_offset = ppm_offset;
+    this->audio_folder = audio_folder;
 }
 
 m_recorder::~m_recorder()
 {
     //dtor
 }
-const char * m_recorder::generate_filename() {
-    DateTime myTime = sat.next_rising_time.AddMinutes(10);
 
-    sprintf(filename, "%s/%s_%d%02d%02d-%02d%02d.%s", audio_directory, sat.name,
-            myTime.Year(), myTime.Month(), myTime.Day(),
-            myTime.Hour(), myTime.Minute(),
-            "wav");
+std::string m_recorder::generate_filename(m_satellite sat) {
+    filename.clear();
+
+    filename = audio_folder + "/";
+    filename += sat.get_sat_config().name;
+    filename += sat.get_los().Year();
+    filename += sat.get_los().Month() < 10 ? "0" : "" + sat.get_los().Month();
+    filename += sat.get_los().Day() < 10 ? "0" : "" + sat.get_los().Day();
+    filename += sat.get_los().Hour() < 10 ? "0" : "" + sat.get_los().Hour();
+    filename += sat.get_los().Minute() < 10 ? "0" : "" + sat.get_los().Minute();
+    filename += ".wav";
 
     return filename;
 }
 
-const bool m_recorder::record_sat() {
-    char system_call[MAX_SYSTEM_CALL_SIZE];
+bool m_recorder::record_sat(m_satellite sat) {
+    std::string systemcall;
 
-	DateTime my_time = sat.next_rising_time.AddMinutes(0);
-	int ppm_offset = 72;
+    systemcall.clear();
+    systemcall = "timeout " + std::to_string(sat.get_los_seconds() - sat.get_aos_seconds());
+    systemcall += " rtl_fm -d " + std::to_string(rtl_device);
+    systemcall += " -M fm ";
+    systemcall += " -f " + std::to_string(sat.get_sat_config().frequency);
+    systemcall += " -s " + std::to_string(sat.get_sat_config().bandwidth);
+    systemcall += " -p " + std::to_string(ppm_offset);
+    systemcall += " -F 9 ";
+    systemcall += " | ";
+    systemcall += " sox -t raw ";
+    systemcall += " -r " + std::to_string(sat.get_sat_config().bandwidth);
+    systemcall += " -es -b16 -c1 -V1 ";
+    systemcall += " - " + generate_filename(sat);
+    systemcall += " rate 11025";
 
-    //The 600 seconds of recording time could be calculated if the 'struct sat' had also the declining time or passing time
-    sprintf(system_call, "timeout %d rtl_fm -M fm -f %d -s %d -p %d -F 9 - | sox -t raw -r %d -es -b16 -c1 -V1 - %s rate 11025",
-            600, sat.frequency, 2*sat.bandwidth, ppm_offset, 2*sat.bandwidth, generate_filename());
-
-    printf("* System call: %s\n", system_call);
-
-    system(system_call);
-
+    system(systemcall.c_str());
     return true;
 }
