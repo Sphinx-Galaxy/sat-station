@@ -2,26 +2,29 @@
 #define M_RECORDER_H
 
 #include "m_file_handler.h"
+#include "m_satellite.h"
 #include "m_tle.h"
+
+#include <string>
 
 class m_recorder
 {
     public:
-        m_recorder(struct m_sat sat, const char * audio_directory);
+        m_recorder(const std::string &audio_folder, int ppm_offset=72, int rtl_device=0);
         virtual ~m_recorder();
 
-        const bool record_sat();
-        const char * get_audiofile_name() {return filename;}
+        bool record_sat(m_satellite sat);
+        std::string get_audiofile_name() {return filename;}
 
     protected:
 
     private:
-        struct m_sat sat;
-        char filename[MAX_FILENAME_SIZE];
-        char audio_directory[MAX_FILENAME_SIZE];
+        std::string filename;
+        std::string audio_folder;
+        int ppm_offset, rtl_device;
 
-        const char * generate_filename();
-        const bool save_audio_to_file();
+        std::string generate_filename(m_satellite sat);
+        bool save_audio_to_file();
 };
 
 #endif // M_RECORDER_H
