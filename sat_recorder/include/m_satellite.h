@@ -3,35 +3,64 @@
 
 #include "m_tle.h"
 
-
+#include <string>
 #include <time.h>
+
+struct sat_config {
+    std::string name;
+    Tle *tle;
+
+    unsigned long frequency;
+    unsigned long bandwidth;
+};
 
 class m_satellite
 {
     public:
-        m_satellite(CoordGeodetic geo, const double minimum_elevation);
+        m_satellite(CoordGeodetic geo, double minimum_elevation, const struct sat_config &sat_cfg);
         virtual ~m_satellite();
 
-        const unsigned long get_next_sat_time() {return sat_now.next_rising_time_utc;}
-        const unsigned long get_next_sat_frequency() {return sat_now.frequency;}
-        const char * get_next_sat_name() {return sat_now.name;}
-        const m_sat get_next_sat() {return sat_now;}
 
-        const bool set_next_sat();
+        unsigned long get_aos_seconds() {return datetime_to_seconds(aos);}
+        unsigned long get_los_seconds() {return datetime_to_seconds(los);}
+        DateTime get_aos() {return aos;}
+        DateTime get_los() {return los;}
+        double get_max_elevation() const {return max_elevation;}
+        struct sat_config get_sat_config() const {return sat_cfg;};
+
+        void update();
 
     protected:
     private:
+        struct sat_config sat_cfg;
         double minimum_elevation;
-        const int time_step = 180;
         CoordGeodetic user_geo;
+
+        DateTime aos;
+        DateTime los;
+        double max_elevation;
+
+        const int time_step = 180;
         DateTime start_time;
-        struct m_sat sat_now;
-        const struct m_sat sat_list[NUMBER_OF_SATS] = {noaa15, noaa18, noaa19, meteor};
 
+        double find_max_elevation(SGP4& sgp4, const DateTime& aos, const DateTime& los);
+        bool calc_sat_rising_time();
+        DateTime find_crossing_point(SGP4& sgp4, const DateTime& initial_time1, const DateTime& initial_time2, bool finding_aos);
+        unsigned long datetime_to_seconds(const DateTime &date);
 
-        const DateTime calc_sat_rising_time(struct m_sat sat);
-        const double FindMaxElevation(SGP4& sgp4, const DateTime& aos, const DateTime& los);
-        const DateTime FindCrossingPoint(SGP4& sgp4, const DateTime& initial_time1, const DateTime& initial_time2, bool finding_aos);
 };
+
+inline unsigned long m_satellite::datetime_to_seconds(const DateTime &date) {
+    struct tm *tm_now;
+
+    tm_now->tm_year = date.Year()-1900;
+    tm_now->tm_mon = date.Month()-1;
+    tm_now->tm_mday = date.Day();
+    tm_now->tm_hour = date.Hour();
+    tm_now->tm_min = date.Minute();
+    tm_now->tm_sec = date.Second();
+
+    return mktime(tm_now);
+}
 
 #endif // M_SATELLITE_H
