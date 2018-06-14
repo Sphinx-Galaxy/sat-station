@@ -19,7 +19,7 @@ using namespace std;
 
 int main(int argc, char * argv[])
 {
-    CoordGeodetic geo(52.637, 9.223, 10); //Change here if you want different longitude, latitude, altitude
+/*    CoordGeodetic geo(52.637, 9.223, 10); //Change here if you want different longitude, latitude, altitude
     m_satellite gen_sat(geo, 40); //Change here if you want a different degree of elevation
 
 	bool firstrun = true;
@@ -57,5 +57,5 @@ int main(int argc, char * argv[])
 
 
     cout << endl << "Successfull end!" << endl;
-    return 0;
+    return 0;*/
 }

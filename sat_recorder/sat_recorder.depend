@@ -344,7 +344,11 @@
 1512044453 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/Vector.cpp
 	"Vector.h"
 
+<<<<<<< HEAD
 1527015385 source:/home/mattis/git/sat_station/sat_recorder/main.cpp
+=======
+1528823516 source:/mnt/private/git/sat_station/sat_recorder/main.cpp
+>>>>>>> 7d83380ae5193750be2d643f3e8089fcf5e7cae5
 	<iostream>
 	<stdlib.h>
 	"m_file_handler.h"
@@ -360,6 +364,7 @@
 	"CoordTopocentric.h"
 	"CoordGeodetic.h"
 
+<<<<<<< HEAD
 1527015561 source:/home/mattis/git/sat_station/sat_recorder/src/CoordGeodetic.cpp
 	"CoordGeodetic.h"
 
@@ -373,14 +378,47 @@
 	"DecayedException.h"
 
 1527015587 source:/home/mattis/git/sat_station/sat_recorder/src/Eci.cpp
+=======
+1528391120 source:/mnt/private/git/sat_station/sat_recorder/src/CoordGeodetic.cpp
+	"CoordGeodetic.h"
+
+1528391120 source:/mnt/private/git/sat_station/sat_recorder/src/CoordTopocentric.cpp
+	"CoordTopocentric.h"
+
+1528391120 source:/mnt/private/git/sat_station/sat_recorder/src/DateTime.cpp
+	"DateTime.h"
+
+1528391120 source:/mnt/private/git/sat_station/sat_recorder/src/DecayedException.cpp
+	"DecayedException.h"
+
+1528391120 source:/mnt/private/git/sat_station/sat_recorder/src/Eci.cpp
+>>>>>>> 7d83380ae5193750be2d643f3e8089fcf5e7cae5
 	"Eci.h"
 	"Globals.h"
 	"Util.h"
 
+<<<<<<< HEAD
 1527015562 source:/home/mattis/git/sat_station/sat_recorder/src/Globals.cpp
 	"Globals.h"
 
 1527015571 source:/home/mattis/git/sat_station/sat_recorder/src/m_satellite.cpp
+=======
+1528391120 source:/mnt/private/git/sat_station/sat_recorder/src/Globals.cpp
+	"Globals.h"
+
+1528391120 source:/mnt/private/git/sat_station/sat_recorder/src/m_file_handler.cpp
+	"m_file_handler.h"
+	<dirent.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<string>
+	<stdint.h>
+	<sys/stat.h>
+	<time.h>
+
+1528825647 source:/mnt/private/git/sat_station/sat_recorder/src/m_satellite.cpp
+>>>>>>> 7d83380ae5193750be2d643f3e8089fcf5e7cae5
 	"m_satellite.h"
 	"Observer.h"
 	"Util.h"
@@ -391,6 +429,7 @@
 	<cmath>
 	<list>
 
+<<<<<<< HEAD
 1527015558 source:/home/mattis/git/sat_station/sat_recorder/src/Observer.cpp
 	"Observer.h"
 	"CoordTopocentric.h"
@@ -403,6 +442,27 @@
 	"SatelliteException.h"
 
 1527015587 source:/home/mattis/git/sat_station/sat_recorder/src/SGP4.cpp
+=======
+1528391120 source:/mnt/private/git/sat_station/sat_recorder/src/m_wxxer.cpp
+	"m_wxxer.h"
+	"m_file_handler.h"
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+
+1528391120 source:/mnt/private/git/sat_station/sat_recorder/src/Observer.cpp
+	"Observer.h"
+	"CoordTopocentric.h"
+
+1528391120 source:/mnt/private/git/sat_station/sat_recorder/src/OrbitalElements.cpp
+	"OrbitalElements.h"
+	"Tle.h"
+
+1528391120 source:/mnt/private/git/sat_station/sat_recorder/src/SatelliteException.cpp
+	"SatelliteException.h"
+
+1528391120 source:/mnt/private/git/sat_station/sat_recorder/src/SGP4.cpp
+>>>>>>> 7d83380ae5193750be2d643f3e8089fcf5e7cae5
 	"SGP4.h"
 	"Util.h"
 	"Vector.h"
@@ -411,12 +471,17 @@
 	<cmath>
 	<iomanip>
 
+<<<<<<< HEAD
 1527015570 source:/home/mattis/git/sat_station/sat_recorder/src/SolarPosition.cpp
+=======
+1528391120 source:/mnt/private/git/sat_station/sat_recorder/src/SolarPosition.cpp
+>>>>>>> 7d83380ae5193750be2d643f3e8089fcf5e7cae5
 	"SolarPosition.h"
 	"Globals.h"
 	"Util.h"
 	<cmath>
 
+<<<<<<< HEAD
 1527015549 source:/home/mattis/git/sat_station/sat_recorder/src/TimeSpan.cpp
 	"TimeSpan.h"
 
@@ -428,11 +493,25 @@
 	"TleException.h"
 
 1527015575 source:/home/mattis/git/sat_station/sat_recorder/src/Util.cpp
+=======
+1528391120 source:/mnt/private/git/sat_station/sat_recorder/src/TimeSpan.cpp
+	"TimeSpan.h"
+
+1528391120 source:/mnt/private/git/sat_station/sat_recorder/src/Tle.cpp
+	"Tle.h"
+	<locale>
+
+1528391120 source:/mnt/private/git/sat_station/sat_recorder/src/TleException.cpp
+	"TleException.h"
+
+1528391120 source:/mnt/private/git/sat_station/sat_recorder/src/Util.cpp
+>>>>>>> 7d83380ae5193750be2d643f3e8089fcf5e7cae5
 	"Util.h"
 	<algorithm>
 	<locale>
 	<functional>
 
+<<<<<<< HEAD
 1527015554 source:/home/mattis/git/sat_station/sat_recorder/src/Vector.cpp
 	"Vector.h"
 
@@ -443,4 +522,127 @@
 	<iostream>
 	<sys/stat.h>
 	<ctime>
+=======
+1528391120 source:/mnt/private/git/sat_station/sat_recorder/src/Vector.cpp
+	"Vector.h"
+
+1528391120 /mnt/private/git/sat_station/sat_recorder/include/CoordGeodetic.h
+	"Util.h"
+	<string>
+	<sstream>
+	<iomanip>
+
+1528391120 /mnt/private/git/sat_station/sat_recorder/include/Util.h
+	"Globals.h"
+	<sstream>
+
+1528391120 /mnt/private/git/sat_station/sat_recorder/include/Globals.h
+	<cmath>
+
+1528391120 /mnt/private/git/sat_station/sat_recorder/include/CoordTopocentric.h
+	"Util.h"
+	<string>
+	<sstream>
+	<iomanip>
+
+1528391120 /mnt/private/git/sat_station/sat_recorder/include/DateTime.h
+	<iomanip>
+	<iostream>
+	<sstream>
+	<stdint.h>
+	"TimeSpan.h"
+	"Util.h"
+
+1528391120 /mnt/private/git/sat_station/sat_recorder/include/TimeSpan.h
+	<iostream>
+	<sstream>
+	<iomanip>
+	<cmath>
+	<stdint.h>
+
+1528391120 /mnt/private/git/sat_station/sat_recorder/include/DecayedException.h
+	"DateTime.h"
+	"Vector.h"
+	<stdexcept>
+	<string>
+
+1528391120 /mnt/private/git/sat_station/sat_recorder/include/Vector.h
+	<cmath>
+	<string>
+	<sstream>
+	<iomanip>
+
+1528391120 /mnt/private/git/sat_station/sat_recorder/include/Eci.h
+	"CoordGeodetic.h"
+	"Vector.h"
+	"DateTime.h"
+
+1528391120 /mnt/private/git/sat_station/sat_recorder/include/m_file_handler.h
+
+1528391863 source:/mnt/private/git/sat_station/sat_recorder/src/m_recorder.cpp
+	"m_recorder.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1528827251 /mnt/private/git/sat_station/sat_recorder/include/m_recorder.h
+	"m_file_handler.h"
+	"m_satellite.h"
+	"m_tle.h"
+	<string>
+
+1528825777 /mnt/private/git/sat_station/sat_recorder/include/m_tle.h
+	"SGP4.h"
+	"Util.h"
+	"DateTime.h"
+	"TleException.h"
+	"Tle.h"
+
+1528391120 /mnt/private/git/sat_station/sat_recorder/include/SGP4.h
+	"Tle.h"
+	"OrbitalElements.h"
+	"Eci.h"
+	"SatelliteException.h"
+	"DecayedException.h"
+
+1528391120 /mnt/private/git/sat_station/sat_recorder/include/Tle.h
+	"Util.h"
+	"DateTime.h"
+	"TleException.h"
+
+1528391120 /mnt/private/git/sat_station/sat_recorder/include/TleException.h
+	<stdexcept>
+	<string>
+
+1528391120 /mnt/private/git/sat_station/sat_recorder/include/OrbitalElements.h
+	"Util.h"
+	"DateTime.h"
+
+1528391120 /mnt/private/git/sat_station/sat_recorder/include/SatelliteException.h
+	<stdexcept>
+	<string>
+
+1528823114 source:/mnt/private/git/sat_station/sat_recorder/src/m_station.cpp
+	"m_station.h"
+
+1528826060 /mnt/private/git/sat_station/sat_recorder/include/m_station.h
+	"m_satellite.h"
+	<vector>
+
+1528391120 /mnt/private/git/sat_station/sat_recorder/include/m_wxxer.h
+	"m_file_handler.h"
+
+1528391120 /mnt/private/git/sat_station/sat_recorder/include/Observer.h
+	"CoordGeodetic.h"
+	"Eci.h"
+
+1528391120 /mnt/private/git/sat_station/sat_recorder/include/SolarPosition.h
+	"DateTime.h"
+	"Eci.h"
+
+1528826417 /mnt/private/git/sat_station/sat_recorder/include/m_satellite.h
+	"m_tle.h"
+	<string>
+	<time.h>
+>>>>>>> 7d83380ae5193750be2d643f3e8089fcf5e7cae5
 
