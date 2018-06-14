@@ -344,3 +344,103 @@
 1512044453 source:/home/mattis/Seafile/Workspace/Cpp/sat_recorder/src/Vector.cpp
 	"Vector.h"
 
+1527015385 source:/home/mattis/git/sat_station/sat_recorder/main.cpp
+	<iostream>
+	<stdlib.h>
+	"m_file_handler.h"
+	"m_wxxer.h"
+	"m_satellite.h"
+	"m_recorder.h"
+	<unistd.h>
+	<stdio.h>
+	<stdlib.h>
+	"Observer.h"
+	"SGP4.h"
+	"Util.h"
+	"CoordTopocentric.h"
+	"CoordGeodetic.h"
+
+1527015561 source:/home/mattis/git/sat_station/sat_recorder/src/CoordGeodetic.cpp
+	"CoordGeodetic.h"
+
+1527015583 source:/home/mattis/git/sat_station/sat_recorder/src/CoordTopocentric.cpp
+	"CoordTopocentric.h"
+
+1527015557 source:/home/mattis/git/sat_station/sat_recorder/src/DateTime.cpp
+	"DateTime.h"
+
+1527015582 source:/home/mattis/git/sat_station/sat_recorder/src/DecayedException.cpp
+	"DecayedException.h"
+
+1527015587 source:/home/mattis/git/sat_station/sat_recorder/src/Eci.cpp
+	"Eci.h"
+	"Globals.h"
+	"Util.h"
+
+1527015562 source:/home/mattis/git/sat_station/sat_recorder/src/Globals.cpp
+	"Globals.h"
+
+1527015571 source:/home/mattis/git/sat_station/sat_recorder/src/m_satellite.cpp
+	"m_satellite.h"
+	"Observer.h"
+	"Util.h"
+	"SGP4.h"
+	"CoordTopocentric.h"
+	"CoordGeodetic.h"
+	<float.h>
+	<cmath>
+	<list>
+
+1527015558 source:/home/mattis/git/sat_station/sat_recorder/src/Observer.cpp
+	"Observer.h"
+	"CoordTopocentric.h"
+
+1527015579 source:/home/mattis/git/sat_station/sat_recorder/src/OrbitalElements.cpp
+	"OrbitalElements.h"
+	"Tle.h"
+
+1527015567 source:/home/mattis/git/sat_station/sat_recorder/src/SatelliteException.cpp
+	"SatelliteException.h"
+
+1527015587 source:/home/mattis/git/sat_station/sat_recorder/src/SGP4.cpp
+	"SGP4.h"
+	"Util.h"
+	"Vector.h"
+	"SatelliteException.h"
+	"DecayedException.h"
+	<cmath>
+	<iomanip>
+
+1527015570 source:/home/mattis/git/sat_station/sat_recorder/src/SolarPosition.cpp
+	"SolarPosition.h"
+	"Globals.h"
+	"Util.h"
+	<cmath>
+
+1527015549 source:/home/mattis/git/sat_station/sat_recorder/src/TimeSpan.cpp
+	"TimeSpan.h"
+
+1527015574 source:/home/mattis/git/sat_station/sat_recorder/src/Tle.cpp
+	"Tle.h"
+	<locale>
+
+1527015565 source:/home/mattis/git/sat_station/sat_recorder/src/TleException.cpp
+	"TleException.h"
+
+1527015575 source:/home/mattis/git/sat_station/sat_recorder/src/Util.cpp
+	"Util.h"
+	<algorithm>
+	<locale>
+	<functional>
+
+1527015554 source:/home/mattis/git/sat_station/sat_recorder/src/Vector.cpp
+	"Vector.h"
+
+1528988591 source:/home/mattis/git/sat_station/sat_recorder/src/m_file_handler.cpp
+	"m_file_handler.h"
+	<cassert>
+	<dirent.h>
+	<iostream>
+	<sys/stat.h>
+	<ctime>
+

@@ -1,38 +1,33 @@
 #ifndef M_FILE_HANDLER_H
 #define M_FILE_HANDLER_H
 
-#define MAX_FILENAME_SIZE 256
-#define MAX_SYSTEM_CALL_SIZE 256
+#include <string>
 
 class m_file_handler
 {
     public:
-        m_file_handler(const char filename[MAX_FILENAME_SIZE]);
+        m_file_handler(const std::string &full_filename);
         virtual ~m_file_handler();
 
-        bool set_filename(const char filename[MAX_FILENAME_SIZE]);
+        void set_filename(const std::string &full_filename);
 
-        const char * get_stripped_filename() {return stripped_filename;}
-        const char * get_full_filename() {return filename;}
-        const char * get_directory() {return file_directory;}
+        std::string get_stripped_filename() const {return stripped_filename;}
+        std::string get_full_filename() const {return full_filename;}
+        std::string get_directory() const {return directory;}
 
-        static const bool strip_filename(const char * filename, char * cb);
+        static std::string strip_filename(const std::string &full_filename);
+        static std::string strip_directory(const std::string &full_filename);
 
-        const char * get_next_file();
-        const char * get_latest_file();
+        std::string get_latest_file(const std::string &directory);
+        std::string get_next_file(const std::string &file);
+        bool is_last_file(const std::string &file);
 
-        const bool is_last_file(const char * file);
-
+        unsigned long timestamp_to_seconds(const std::string &stripped_filename);
     protected:
 
     private:
-        char filename[MAX_FILENAME_SIZE];
-        char stripped_filename[MAX_FILENAME_SIZE];
-        char file_directory[MAX_FILENAME_SIZE];
-        const long crude_time(const char * file);
+        std::string full_filename, stripped_filename, directory;
 
-        bool strip_filename();
-        bool strip_directory();
 };
 
 #endif // M_FILE_HANDLER_H

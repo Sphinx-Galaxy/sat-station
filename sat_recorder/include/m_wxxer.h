@@ -3,33 +3,48 @@
 
 #include "m_file_handler.h"
 
+#include <vector>
+
 class m_wxxer
 {
     public:
-        m_wxxer(const char * audio_file, const char * map_folder, const char * forecast_folder);
+        m_wxxer(const std::string &audio_file, const std::string &map_folder,
+                const std::string &forecast_folder, const std::vector<std::string> &options);
         virtual ~m_wxxer();
 
-        const bool create_forecast();
-        const bool create_map();
-        const char * get_utc();
+        void create_forecast();
+        void create_map();
+
+        std::string get_map_file() const {return map_file;}
+        std::string get_utc() const {return UTC;}
+        std::string get_sat_name() const {return sat_name;}
 
     protected:
     private:
-        const char * get_sat_name();
-        const bool set_map_file();
-        const bool set_forecast_file();
+        std::vector<std::string> options;
+        std::string audio_file;
+        std::string forecast_folder;
+        std::string map_folder;
 
-        enum options {MCIR};
+        std::string stripped_filename;
+        std::string map_file;
+        std::string forecast_file;
 
-        char stripped_filename[MAX_FILENAME_SIZE];
-        char audio_file[MAX_FILENAME_SIZE];
-        char map_file[MAX_FILENAME_SIZE];
-        char forecast_file[MAX_FILENAME_SIZE];
+        std::string UTC;
+        std::string sat_name;
 
-        char forecast_folder[MAX_FILENAME_SIZE];
-        char map_folder[MAX_FILENAME_SIZE];
-        char UTC[MAX_FILENAME_SIZE];
-        char sat_name[MAX_FILENAME_SIZE];
+        void set_utc();
+        void set_map_file();
+        void set_sat_name();
+        void set_forecast_file(const std::string &option);
 };
+
+inline void m_wxxer::set_map_file() {
+    map_file = map_folder + "/" + stripped_filename + "map.png";
+}
+
+inline void m_wxxer::set_forecast_file(const std::string &option) {
+    forecast_file = forecast_folder + "/" + stripped_filename + "-" + option + ".png";
+}
 
 #endif // M_WXXER_H
