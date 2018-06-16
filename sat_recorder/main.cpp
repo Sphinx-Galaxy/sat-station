@@ -4,6 +4,7 @@
 #include "m_wxxer.h"
 #include "m_satellite.h"
 #include "m_recorder.h"
+#include "m_station.h"
 
 #include <unistd.h>
 #include <stdio.h>
@@ -19,43 +20,43 @@ using namespace std;
 
 int main(int argc, char * argv[])
 {
-/*    CoordGeodetic geo(52.637, 9.223, 10); //Change here if you want different longitude, latitude, altitude
-    m_satellite gen_sat(geo, 40); //Change here if you want a different degree of elevation
+    CoordGeodetic geo(52.637, 9.223, 10); //Change here if you want different longitude, latitude, altitude
+    m_station station(geo, 40);
+    m_satellite *sat;
 
 	bool firstrun = true;
     time_t local_time;
-    char * forecast_folder = "/home/mattis/weather/forecast"; //Change here if you want it to store things in different folders
-    char * map_folder = "/home/mattis/weather/map";
-    char * audio_folder = "/home/mattis/weather/audio";
+    std::string forecast_folder = "/home/mattis/weather/forecast";
+    std::string map_folder =  "/home/mattis/weather/map";//Change here if you want it to store things in different folders
+    std::string audio_folder = "/home/mattis/weather/audio";
 
     //Better change nothing here...
     while(true) {
-	if(!firstrun)
-		sleep(90);
+        if(!firstrun)
+            sleep(90);
 
-        gen_sat.set_next_sat();
-        printf("* Next rising time: %ld UTC seconds\n", gen_sat.get_next_sat_time());
+        sat = station.get_next_sat();
+        std::cout << "Setting next sat:\nAOS: " << sat->get_aos_seconds() << " LOS: " << sat->get_los_seconds() << std::endl;
 
         time(&local_time);
-        printf("* Sleep for: %d seconds\n", gen_sat.get_next_sat_time() - local_time);
-        sleep(gen_sat.get_next_sat_time() - local_time);
+        std::cout << "Waiting now: " << (sat->get_aos_seconds()-local_time) << " seconds" << std::endl;
+        //sleep(sat->get_aos_seconds() - local_time);
 
-	//System call to kill all sdr
-	system("ps -ef | grep 'rtl_sdr' | grep -v grep | awk '{print $2}' | xargs -r kill -9");
-	sleep(3);
+        //System call to kill all sdr
+        //system("ps -ef | grep 'rtl_sdr' | grep -v grep | awk '{print $2}' | xargs -r kill -9");
 
         //Record Audio
-        m_recorder m_rec(gen_sat.get_next_sat(), audio_folder);
-        m_rec.record_sat();
+        m_recorder rec(audio_folder, 72, 1);
+        rec.record_sat(*sat);
 
-        //Make weather forecast
-        m_wxxer m_forecaster(m_rec.get_audiofile_name(), map_folder, forecast_folder);
-        m_forecaster.create_forecast();
+        //Make weather forecas
+        m_wxxer wxxer(rec.get_audiofile_name(), map_folder, forecast_folder, {"MCIR"});
+        wxxer.create_forecast();
 
 	firstrun=false;
 }
 
 
     cout << endl << "Successfull end!" << endl;
-    return 0;*/
+    return 0;
 }
