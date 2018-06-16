@@ -1,5 +1,6 @@
 #include "m_file_handler.h"
 
+#include <algorithm>
 #include <cassert>
 #include <dirent.h>
 #include <iostream>
@@ -32,6 +33,10 @@ std::string m_file_handler::strip_filename(const std::string &full_filename) {
         temp.push_back(full_filename[--character_counter]);
         assert(character_counter > 0);
     }
+
+    temp.pop_back();
+
+    reverse(temp.begin(), temp.end());
 
     std::cout << "Stripping Filename: " << full_filename << " : " << temp << std::endl;
 
@@ -147,6 +152,8 @@ std::string m_file_handler::strip_directory(const std::string &full_filename) {
         character_counter++;
         assert(character_counter <= full_filename.size());
     }
+
+    std::cout << "Stripping Directory: " << full_filename << " : " << temp << std::endl;
 
     return temp;
 }
