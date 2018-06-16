@@ -21,12 +21,15 @@ std::string m_recorder::generate_filename(m_satellite sat) {
 
     filename = audio_folder + "/";
     filename += sat.get_sat_config().name;
-    filename += sat.get_los().Year();
-    filename += sat.get_los().Month() < 10 ? "0" : "" + sat.get_los().Month();
-    filename += sat.get_los().Day() < 10 ? "0" : "" + sat.get_los().Day();
-    filename += sat.get_los().Hour() < 10 ? "0" : "" + sat.get_los().Hour();
-    filename += sat.get_los().Minute() < 10 ? "0" : "" + sat.get_los().Minute();
+    filename += "_";
+    filename += std::to_string(sat.get_los().Year());
+    filename += (sat.get_los().Month() < 10 ? "0" : "") + std::to_string(sat.get_los().Month());
+    filename += (sat.get_los().Day() < 10 ? "0" : "") + std::to_string(sat.get_los().Day());
+    filename += (sat.get_los().Hour() < 10 ? "0" : "") + std::to_string(sat.get_los().Hour());
+    filename += (sat.get_los().Minute() < 10 ? "0" : "") + std::to_string(sat.get_los().Minute());
     filename += ".wav";
+
+    std::cout << "Created audio filename: " << filename << std::endl;
 
     return filename;
 }
@@ -48,6 +51,8 @@ bool m_recorder::record_sat(m_satellite sat) {
     systemcall += " -es -b16 -c1 -V1 ";
     systemcall += " - " + generate_filename(sat);
     systemcall += " rate 11025";
+
+    std::cout << "Record systemcall: " << systemcall << std::endl;
 
     system(systemcall.c_str());
     return true;
