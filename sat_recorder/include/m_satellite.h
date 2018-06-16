@@ -50,17 +50,4 @@ class m_satellite
 
 };
 
-inline unsigned long m_satellite::datetime_to_seconds(const DateTime &date) {
-    struct tm *tm_now;
-
-    tm_now->tm_year = date.Year()-1900;
-    tm_now->tm_mon = date.Month()-1;
-    tm_now->tm_mday = date.Day();
-    tm_now->tm_hour = date.Hour();
-    tm_now->tm_min = date.Minute();
-    tm_now->tm_sec = date.Second();
-
-    return mktime(tm_now);
-}
-
 #endif // M_SATELLITE_H

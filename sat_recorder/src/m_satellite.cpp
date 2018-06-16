@@ -23,12 +23,33 @@ m_satellite::~m_satellite() {
 }
 
 void m_satellite::update() {
+    std::cout << "Update sat: " << sat_cfg.name << std::endl;
+    std::cout << "TLE: \n" << sat_cfg.tle->Line1() << std::endl << sat_cfg.tle->Line2() << std::endl;
+
+    start_time = DateTime::Now();
+
     if(!calc_sat_rising_time())
         aos = time(NULL);
     else {
         SGP4 sgp4(*(sat_cfg.tle));
         max_elevation = find_max_elevation(sgp4, aos, los);
     }
+    std::cout << "aos: " << get_aos_seconds() << " los: " << get_los_seconds() << std::endl;
+}
+
+unsigned long m_satellite::datetime_to_seconds(const DateTime &date) {
+    struct tm *tm_now;
+    time_t rawtime;
+    tm_now = gmtime(&rawtime);
+
+    tm_now->tm_year = date.Year()-1900;
+    tm_now->tm_mon = date.Month()-1;
+    tm_now->tm_mday = date.Day();
+    tm_now->tm_hour = date.Hour();
+    tm_now->tm_min = date.Minute();
+    tm_now->tm_sec = date.Second();
+
+    return mktime(tm_now);
 }
 
 double m_satellite::find_max_elevation(SGP4& sgp4, const DateTime& aos, const DateTime& los) {
