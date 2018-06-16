@@ -26,7 +26,7 @@ void m_wxxer::create_forecast() {
         set_forecast_file(options[i]);
 
         systemcall = "wxtoimg";
-        systemcall += " -c -b";
+        systemcall += " -c ";
         systemcall += " -m " + map_file;
         systemcall += " " + audio_file;
         systemcall += " " + forecast_file;

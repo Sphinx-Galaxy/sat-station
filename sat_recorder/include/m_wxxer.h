@@ -40,7 +40,7 @@ class m_wxxer
 };
 
 inline void m_wxxer::set_map_file() {
-    map_file = map_folder + "/" + stripped_filename + "map.png";
+    map_file = map_folder + "/" + stripped_filename + "_map.png";
 }
 
 inline void m_wxxer::set_forecast_file(const std::string &option) {
