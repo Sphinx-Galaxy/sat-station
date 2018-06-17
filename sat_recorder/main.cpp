@@ -21,7 +21,7 @@ using namespace std;
 int main(int argc, char * argv[])
 {
     CoordGeodetic geo(52.637, 9.223, 10); //Change here if you want different longitude, latitude, altitude
-    m_station station(geo, 40);
+    m_station station(geo, 40, 1);
     m_satellite *sat;
 
 	bool firstrun = true;
