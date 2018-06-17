@@ -12,13 +12,13 @@ LD = g++
 WINDRES = windres
 
 INC = 
-CFLAGS = -Wall -fexceptions -std=c++11
+CFLAGS = -Wall -fexceptions -std=c++14
 RESINC = 
 LIBDIR = 
 LIB = 
 LDFLAGS = 
 
-INC_DEBUG = $(INC) -I/home/mattis/sat_recorder/include
+INC_DEBUG = $(INC) -I ./include
 CFLAGS_DEBUG = $(CFLAGS) -g
 RESINC_DEBUG = $(RESINC)
 RCFLAGS_DEBUG = $(RCFLAGS)
@@ -29,7 +29,7 @@ OBJDIR_DEBUG = obj/Debug
 DEP_DEBUG = 
 OUT_DEBUG = bin/Debug/sat_recorder
 
-INC_RELEASE = $(INC) -I/home/mattis/sat_recorder/include
+INC_RELEASE = $(INC) -I ./include
 CFLAGS_RELEASE = $(CFLAGS) -O2
 RESINC_RELEASE = $(RESINC)
 RCFLAGS_RELEASE = $(RCFLAGS)
@@ -40,9 +40,9 @@ OBJDIR_RELEASE = obj/Release
 DEP_RELEASE = 
 OUT_RELEASE = bin/Release/sat_recorder
 
-OBJ_DEBUG = $(OBJDIR_DEBUG)/src/SatelliteException.o $(OBJDIR_DEBUG)/main.o $(OBJDIR_DEBUG)/src/CoordGeodetic.o $(OBJDIR_DEBUG)/src/CoordTopocentric.o $(OBJDIR_DEBUG)/src/DateTime.o $(OBJDIR_DEBUG)/src/DecayedException.o $(OBJDIR_DEBUG)/src/Eci.o $(OBJDIR_DEBUG)/src/Globals.o $(OBJDIR_DEBUG)/src/Observer.o $(OBJDIR_DEBUG)/src/OrbitalElements.o $(OBJDIR_DEBUG)/src/SGP4.o $(OBJDIR_DEBUG)/src/SolarPosition.o $(OBJDIR_DEBUG)/src/TimeSpan.o $(OBJDIR_DEBUG)/src/Tle.o $(OBJDIR_DEBUG)/src/TleException.o $(OBJDIR_DEBUG)/src/Util.o $(OBJDIR_DEBUG)/src/Vector.o $(OBJDIR_DEBUG)/src/m_file_handler.o $(OBJDIR_DEBUG)/src/m_recorder.o $(OBJDIR_DEBUG)/src/m_satellite.o $(OBJDIR_DEBUG)/src/m_wxxer.o
+OBJ_DEBUG = $(OBJDIR_DEBUG)/src/SatelliteException.o $(OBJDIR_DEBUG)/main.o $(OBJDIR_DEBUG)/src/CoordGeodetic.o $(OBJDIR_DEBUG)/src/CoordTopocentric.o $(OBJDIR_DEBUG)/src/DateTime.o $(OBJDIR_DEBUG)/src/DecayedException.o $(OBJDIR_DEBUG)/src/Eci.o $(OBJDIR_DEBUG)/src/Globals.o $(OBJDIR_DEBUG)/src/Observer.o $(OBJDIR_DEBUG)/src/OrbitalElements.o $(OBJDIR_DEBUG)/src/SGP4.o $(OBJDIR_DEBUG)/src/SolarPosition.o $(OBJDIR_DEBUG)/src/TimeSpan.o $(OBJDIR_DEBUG)/src/Tle.o $(OBJDIR_DEBUG)/src/TleException.o $(OBJDIR_DEBUG)/src/Util.o $(OBJDIR_DEBUG)/src/Vector.o $(OBJDIR_DEBUG)/src/m_file_handler.o $(OBJDIR_DEBUG)/src/m_recorder.o $(OBJDIR_DEBUG)/src/m_satellite.o $(OBJDIR_DEBUG)/src/m_wxxer.o $(OBJDIR_DEBUG)/src/m_station.o
 
-OBJ_RELEASE = $(OBJDIR_RELEASE)/src/SatelliteException.o $(OBJDIR_RELEASE)/main.o $(OBJDIR_RELEASE)/src/CoordGeodetic.o $(OBJDIR_RELEASE)/src/CoordTopocentric.o $(OBJDIR_RELEASE)/src/DateTime.o $(OBJDIR_RELEASE)/src/DecayedException.o $(OBJDIR_RELEASE)/src/Eci.o $(OBJDIR_RELEASE)/src/Globals.o $(OBJDIR_RELEASE)/src/Observer.o $(OBJDIR_RELEASE)/src/OrbitalElements.o $(OBJDIR_RELEASE)/src/SGP4.o $(OBJDIR_RELEASE)/src/SolarPosition.o $(OBJDIR_RELEASE)/src/TimeSpan.o $(OBJDIR_RELEASE)/src/Tle.o $(OBJDIR_RELEASE)/src/TleException.o $(OBJDIR_RELEASE)/src/Util.o $(OBJDIR_RELEASE)/src/Vector.o $(OBJDIR_RELEASE)/src/m_file_handler.o $(OBJDIR_RELEASE)/src/m_recorder.o $(OBJDIR_RELEASE)/src/m_satellite.o $(OBJDIR_RELEASE)/src/m_wxxer.o
+OBJ_RELEASE = $(OBJDIR_RELEASE)/src/SatelliteException.o $(OBJDIR_RELEASE)/main.o $(OBJDIR_RELEASE)/src/CoordGeodetic.o $(OBJDIR_RELEASE)/src/CoordTopocentric.o $(OBJDIR_RELEASE)/src/DateTime.o $(OBJDIR_RELEASE)/src/DecayedException.o $(OBJDIR_RELEASE)/src/Eci.o $(OBJDIR_RELEASE)/src/Globals.o $(OBJDIR_RELEASE)/src/Observer.o $(OBJDIR_RELEASE)/src/OrbitalElements.o $(OBJDIR_RELEASE)/src/SGP4.o $(OBJDIR_RELEASE)/src/SolarPosition.o $(OBJDIR_RELEASE)/src/TimeSpan.o $(OBJDIR_RELEASE)/src/Tle.o $(OBJDIR_RELEASE)/src/TleException.o $(OBJDIR_RELEASE)/src/Util.o $(OBJDIR_RELEASE)/src/Vector.o $(OBJDIR_RELEASE)/src/m_file_handler.o $(OBJDIR_RELEASE)/src/m_recorder.o $(OBJDIR_RELEASE)/src/m_satellite.o $(OBJDIR_RELEASE)/src/m_wxxer.o $(OBJDIR_RELEASE)/src/m_station.o
 
 all: debug release
 
@@ -122,6 +122,9 @@ $(OBJDIR_DEBUG)/src/m_satellite.o: src/m_satellite.cpp
 
 $(OBJDIR_DEBUG)/src/m_wxxer.o: src/m_wxxer.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/m_wxxer.cpp -o $(OBJDIR_DEBUG)/src/m_wxxer.o
+
+$(OBJDIR_DEBUG)/src/m_station.o: src/m_station.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/m_station.cpp -o $(OBJDIR_DEBUG)/src/m_station.o
 
 clean_debug: 
 	rm -f $(OBJ_DEBUG) $(OUT_DEBUG)
@@ -203,6 +206,9 @@ $(OBJDIR_RELEASE)/src/m_satellite.o: src/m_satellite.cpp
 
 $(OBJDIR_RELEASE)/src/m_wxxer.o: src/m_wxxer.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/m_wxxer.cpp -o $(OBJDIR_RELEASE)/src/m_wxxer.o
+
+$(OBJDIR_RELEASE)/src/m_station.o: src/m_station.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/m_station.cpp -o $(OBJDIR_RELEASE)/src/m_station.o
 
 clean_release: 
 	rm -f $(OBJ_RELEASE) $(OUT_RELEASE)
