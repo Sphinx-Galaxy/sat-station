@@ -27,6 +27,15 @@ void m_wxxer::create_forecast() {
 
         systemcall = "wxtoimg";
         systemcall += " -c ";
+
+/*        if(std::compare(options.at(i), "A") == 0)
+            systemcall += " -a";
+        if(std::compare(options.at(i), "B") == 0)
+            systemcall += " -b";*/
+
+        systemcall += " -e";
+        systemcall += " " + options.at(i);
+
         systemcall += " -m " + map_file;
         systemcall += " " + audio_file;
         systemcall += " " + forecast_file;
@@ -38,6 +47,7 @@ void m_wxxer::create_forecast() {
 void m_wxxer::create_map() {
     std::string systemcall;
 
+    set_utc();
     set_map_file();
 
     systemcall = "wxmap";
