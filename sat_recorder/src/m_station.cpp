@@ -31,14 +31,14 @@ m_satellite* m_station::get_next_sat() {
 }
 
 void m_station::setup() {
-    sat_list.push_back(new m_satellite(geo, minimum_elevation, {"NOAA15", &noaa15_tle, 1371000, 60000}));
+    sat_list.push_back(new m_satellite(geo, minimum_elevation, {"NOAA15", &noaa15_tle, 137620000, 60000}));
 
-    /*struct sat_config noaa18 = {"NOAA18", &noaa18_tle, 1371000, 60000};
+    struct sat_config noaa18 = {"NOAA18", &noaa18_tle, 137912500, 60000};
     sat_list.push_back(new m_satellite(geo, minimum_elevation, noaa18));
 
-    struct sat_config noaa19 = {"NOAA19", &noaa19_tle, 1371000, 60000};
+    struct sat_config noaa19 = {"NOAA19", &noaa19_tle, 137100000, 60000};
     sat_list.push_back(new m_satellite(geo, minimum_elevation, noaa19));
 
-    struct sat_config meteor = {"Meteor", &meteor_tle, 1371000, 60000};
+    struct sat_config meteor = {"Meteor", &meteor_tle, 137620000, 60000};
     sat_list.push_back(new m_satellite(geo, minimum_elevation, meteor));
-*/}
+}
