@@ -18,8 +18,17 @@
 
 using namespace std;
 
+int device_number = 0;
+int ppm_offset = 72;
+
 int main(int argc, char * argv[])
 {
+    if(argc > 1)
+        device_number = std::stoi(std::string(argv[1]));
+
+    if(argc > 2)
+        ppm_offset = std::stoi(std::string(argv[2]));
+
     CoordGeodetic geo(52.637, 9.223, 10); //Change here if you want different longitude, latitude, altitude
     m_station station(geo, 40);
     m_satellite *sat;
@@ -46,7 +55,7 @@ int main(int argc, char * argv[])
         //system("ps -ef | grep 'rtl_sdr' | grep -v grep | awk '{print $2}' | xargs -r kill -9");
 
         //Record Audio
-        m_recorder rec(audio_folder, 72, 1);
+        m_recorder rec(audio_folder, ppm_offset, device_number);
         rec.record_sat(*sat);
 
         //Make weather forecas
