@@ -7,3 +7,5 @@ module bleiakku(){
         translate([5,5,95]) color([0.5,0.5,0.5]) cube([10,5,6]);    
         translate([0,0,95]) color([0,0,1]) cube([10,30,1]); 
 }
+
+bleiakku();
