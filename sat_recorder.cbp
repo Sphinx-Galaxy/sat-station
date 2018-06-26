@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="sat_recorder" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Option virtualFolders="include/;" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/sat_recorder" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="/home/mattis/Seafile/Workspace/Cpp/sat_recorder/" />
+					<Add directory="include" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/sat_recorder" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="include/CoordGeodetic.h" />
+		<Unit filename="include/CoordTopocentric.h" />
+		<Unit filename="include/DateTime.h" />
+		<Unit filename="include/DecayedException.h" />
+		<Unit filename="include/Eci.h" />
+		<Unit filename="include/Globals.h" />
+		<Unit filename="include/Observer.h" />
+		<Unit filename="include/OrbitalElements.h" />
+		<Unit filename="include/SGP4.h" />
+		<Unit filename="include/SatelliteException.h" />
+		<Unit filename="include/SolarPosition.h" />
+		<Unit filename="include/TimeSpan.h" />
+		<Unit filename="include/Tle.h" />
+		<Unit filename="include/TleException.h" />
+		<Unit filename="include/Util.h" />
+		<Unit filename="include/Vector.h" />
+		<Unit filename="include/m_file_handler.h" />
+		<Unit filename="include/m_recorder.h" />
+		<Unit filename="include/m_satellite.h" />
+		<Unit filename="include/m_station.h" />
+		<Unit filename="include/m_tle">
+			<Option virtualFolder="include/" />
+		</Unit>
+		<Unit filename="include/m_tle.h" />
+		<Unit filename="include/m_wxxer.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/CoordGeodetic.cpp" />
+		<Unit filename="src/CoordTopocentric.cpp" />
+		<Unit filename="src/DateTime.cpp" />
+		<Unit filename="src/DecayedException.cpp" />
+		<Unit filename="src/Eci.cpp" />
+		<Unit filename="src/Globals.cpp" />
+		<Unit filename="src/Observer.cpp" />
+		<Unit filename="src/OrbitalElements.cpp" />
+		<Unit filename="src/SGP4.cpp" />
+		<Unit filename="src/SatelliteException.cpp" />
+		<Unit filename="src/SolarPosition.cpp" />
+		<Unit filename="src/TimeSpan.cpp" />
+		<Unit filename="src/Tle.cpp" />
+		<Unit filename="src/TleException.cpp" />
+		<Unit filename="src/Util.cpp" />
+		<Unit filename="src/Vector.cpp" />
+		<Unit filename="src/m_file_handler.cpp" />
+		<Unit filename="src/m_recorder.cpp" />
+		<Unit filename="src/m_satellite.cpp" />
+		<Unit filename="src/m_station.cpp" />
+		<Unit filename="src/m_wxxer.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
