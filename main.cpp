@@ -61,7 +61,6 @@ int main(int argc, char * argv[])
         //Make weather forecas
         m_wxxer wxxer(rec.get_audiofile_name(), map_folder, forecast_folder, {"MCIR"});
         wxxer.create_forecast();
-
 	firstrun=false;
 }
 
