@@ -24,8 +24,10 @@ m_satellite* m_station::get_next_sat() {
 
     for(size_t i = 0; i < sat_list.size(); i++) {
         sat_list[i]->update();
-        if(time > sat_list[i]->get_aos_seconds())
+        if(time > sat_list[i]->get_aos_seconds()) {
             sat_number = i;
+            time = sat_list[i]->get_aos_seconds();
+        }
     }
     return sat_list[sat_number];
 }
