@@ -59,7 +59,7 @@ int main(int argc, char * argv[])
         rec.record_sat(*sat);
 
         //Make weather forecas
-        m_wxxer wxxer(rec.get_audiofile_name(), map_folder, forecast_folder, {"MCIR"});
+        m_wxxer wxxer(rec.get_audiofile_name(), map_folder, forecast_folder, {"MCIR", "MSA", "HVCT", "ZA"});
         wxxer.create_forecast();
 	firstrun=false;
 }
