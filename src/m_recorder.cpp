@@ -20,13 +20,13 @@ std::string m_recorder::generate_filename(m_satellite sat) {
     filename.clear();
 
     filename = audio_folder + "/";
-    filename += sat.get_sat_config().name;
-    filename += "_";
     filename += std::to_string(sat.get_los().Year());
     filename += (sat.get_los().Month() < 10 ? "0" : "") + std::to_string(sat.get_los().Month());
     filename += (sat.get_los().Day() < 10 ? "0" : "") + std::to_string(sat.get_los().Day());
     filename += (sat.get_los().Hour() < 10 ? "0" : "") + std::to_string(sat.get_los().Hour());
     filename += (sat.get_los().Minute() < 10 ? "0" : "") + std::to_string(sat.get_los().Minute());
+    filename += "_";
+    filename += sat.get_sat_config().name;
     filename += ".wav";
 
     std::cout << "Created audio filename: " << filename << std::endl;

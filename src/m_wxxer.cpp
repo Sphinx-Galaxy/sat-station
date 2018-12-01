@@ -64,8 +64,8 @@ void m_wxxer::create_map() {
 }
 
 void m_wxxer::set_utc() {
-    size_t utc_start = stripped_filename.find('_')+1;
-    size_t utc_stop = stripped_filename.find('.');
+    size_t utc_start = 0;
+    size_t utc_stop = stripped_filename.find('_');
 
     std::string tmp_UTC = stripped_filename.substr(utc_start, utc_stop-utc_start);
 
@@ -82,8 +82,8 @@ void m_wxxer::set_utc() {
 
 //todo, wxmap needs "NOAA 19" but i use "NOAA19"
 void m_wxxer::set_sat_name() {
-    size_t name_start = 0;
-    size_t name_stop = stripped_filename.find('_');
+    size_t name_start = stripped_filename.find('_')+1;
+    size_t name_stop = stripped_filename.find('.');
 
     std::string tmp_sat_name = stripped_filename.substr(name_start, name_stop-name_start);
 

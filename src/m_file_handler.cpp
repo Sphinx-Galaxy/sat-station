@@ -59,11 +59,7 @@ unsigned long m_file_handler::timestamp_to_seconds(const std::string &stripped_f
     struct tm * timeinfo;
     time(&rawtime);
     timeinfo = localtime(&rawtime);
-    size_t pos;
-
-    for(pos = 0; pos < stripped_filename.size(); pos++)
-        if(stripped_filename[pos] == '_')
-            break;
+    size_t pos = 0;
 
     year += (stripped_filename[pos++] - '0')*1000;
     year += (stripped_filename[pos++] - '0')*100;
