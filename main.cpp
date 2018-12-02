@@ -47,9 +47,9 @@ int main(int argc, char * argv[])
         sat = station.get_next_sat();
         std::cout << "Setting next sat:\nAOS: " << sat->get_aos_seconds() << " LOS: " << sat->get_los_seconds() << std::endl;
 
-        //time(&local_time);
+        time(&local_time);
         std::cout << "Waiting now: " << (sat->get_aos_seconds()-local_time) << " seconds" << std::endl;
-        sleep(sat->get_aos_seconds() - local_time);
+        //sleep(sat->get_aos_seconds() - local_time);
 
         //System call to kill all sdr
         //system("ps -ef | grep 'rtl_sdr' | grep -v grep | awk '{print $2}' | xargs -r kill -9");
