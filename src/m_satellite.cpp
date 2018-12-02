@@ -36,7 +36,7 @@ void m_satellite::update() {
     }
 
     //Erase 10% of time after LOS and AOS to save space, because the sat isn't directly available
-    DateTime signal((los.Ticks() - aos.Ticks()));
+    DateTime signal(0.1*(los.Ticks() - aos.Ticks()));
     aos = aos.AddTicks(signal.Ticks());
     los = los.AddTicks(-signal.Ticks());
 
