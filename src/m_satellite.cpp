@@ -36,9 +36,9 @@ void m_satellite::update() {
     }
 
     //Erase 10% of time after LOS and AOS to save space, because the sat isn't directly available
-    DateTime signal(0.1*(los.Ticks() - aos.Ticks()));
-    aos.AddTicks(signal.Ticks());
-    los.AddTicks(-signal.Ticks());
+    DateTime signal((los.Ticks() - aos.Ticks()));
+    aos = aos.AddTicks(signal.Ticks());
+    los = los.AddTicks(-signal.Ticks());
 
     std::cout << "aos: " << get_aos_seconds() << " los: " << get_los_seconds() << std::endl;
 }
