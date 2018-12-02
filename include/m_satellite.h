@@ -47,7 +47,7 @@ class m_satellite
         bool calc_sat_rising_time();
         DateTime find_crossing_point(SGP4& sgp4, const DateTime& initial_time1, const DateTime& initial_time2, bool finding_aos);
         unsigned long datetime_to_seconds(const DateTime &date);
-
+        DateTime seconds_to_datetime(const unsigned long seconds);
 };
 
 #endif // M_SATELLITE_H
