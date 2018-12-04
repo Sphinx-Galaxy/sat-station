@@ -44,5 +44,5 @@ void m_station::setup() {
 /*    struct sat_config meteor = {"Meteor", &meteor_tle, 137620000, 60000};
     sat_list.push_back(new m_satellite(geo, minimum_elevation, meteor));*/
 
-    sat_list.push_back(new m_satellite(geo, minimum_elevation, {"ISS (ZARYA)", &iss_tle, 145800000, 20000}));
+    sat_list.push_back(new m_satellite(geo, minimum_elevation, {"ISS", &iss_tle, 145800000, 20000}));
 }
