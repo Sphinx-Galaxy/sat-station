@@ -45,7 +45,7 @@ int main(int argc, char * argv[])
             sleep(90);
 
         sat = station.get_next_sat();
-        std::cout << "Setting next sat:\nAOS: " << sat->get_aos_seconds() << " LOS: " << sat->get_los_seconds() << std::endl;
+        std::cout << "Setting next sat: " << sat->get_sat_config().name << "\nAOS: " << sat->get_aos_seconds() << " LOS: " << sat->get_los_seconds() << std::endl;
 
         time(&local_time);
         std::cout << "Waiting now: " << (sat->get_aos_seconds()-local_time) << " seconds" << std::endl;
