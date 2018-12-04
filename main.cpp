@@ -59,8 +59,10 @@ int main(int argc, char * argv[])
         rec.record_sat(*sat);
 
         //Make weather forecas
-        m_wxxer wxxer(rec.get_audiofile_name(), map_folder, forecast_folder, {"HVCT", "NO", "therm"});
-        wxxer.create_forecast();
+        if(sat->get_sat_config().name.find("ISS") == std::string::npos) {
+            m_wxxer wxxer(rec.get_audiofile_name(), map_folder, forecast_folder, {"HVCT", "NO", "therm"});
+            wxxer.create_forecast();
+        }
 	firstrun=false;
 }
 
