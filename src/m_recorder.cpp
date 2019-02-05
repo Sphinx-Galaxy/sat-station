@@ -47,12 +47,16 @@ bool m_recorder::record_sat(m_satellite sat) {
     systemcall += " -s " + std::to_string(sat.get_sat_config().bandwidth);
     systemcall += " -p " + std::to_string(ppm_offset);
     systemcall += " -F 9 ";
-    systemcall += " | ";
-    systemcall += " sox -t raw ";
-    systemcall += " -r " + std::to_string(sat.get_sat_config().bandwidth);
-    systemcall += " -es -b16 -c1 -V1 ";
-    systemcall += " - " + generate_filename(sat);
-    systemcall += " rate 11025";
+    if(sat.get_sat_config().modulation == "fm") {
+        systemcall += " | ";
+        systemcall += " sox -t raw ";
+        systemcall += " -r " + std::to_string(sat.get_sat_config().bandwidth);
+        systemcall += " -es -b16 -c1 -V1 ";
+        systemcall += " - " + generate_filename(sat);
+        systemcall += " rate 11025";
+    }
+    else
+        systemcall += generate_filename(sat);
 
     std::cout << "Record systemcall: " << systemcall << std::endl;
 
