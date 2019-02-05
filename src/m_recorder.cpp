@@ -41,7 +41,8 @@ bool m_recorder::record_sat(m_satellite sat) {
     systemcall = "timeout " + std::to_string(sat.get_los_seconds() - sat.get_aos_seconds());
     //systemcall = "timeout 3";
     systemcall += " ./rtl_fm -d " + std::to_string(rtl_device);
-    systemcall += " -M fm ";
+    //systemcall += " -M fm ";
+    systemcall += " -M " + std::to_string(sat.get_sat_config().modulation);
     systemcall += " -f " + std::to_string(sat.get_sat_config().frequency);
     systemcall += " -s " + std::to_string(sat.get_sat_config().bandwidth);
     systemcall += " -p " + std::to_string(ppm_offset);

@@ -12,6 +12,7 @@ struct sat_config {
 
     unsigned long frequency;
     unsigned long bandwidth;
+    std::string modulation;
 };
 
 class m_satellite
