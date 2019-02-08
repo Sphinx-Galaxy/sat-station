@@ -41,8 +41,8 @@ void m_station::setup() {
     struct sat_config noaa19 = {"NOAA19", &noaa19_tle, 137100000, 60000, "fm"};
     sat_list.push_back(new m_satellite(geo, minimum_elevation, noaa19));
 
-    struct sat_config meteor = {"Meteor", &meteor_tle, 137100000, 140000,  "raw"};
-    sat_list.push_back(new m_satellite(geo, minimum_elevation, meteor));
+//    struct sat_config meteor = {"Meteor", &meteor_tle, 137100000, 140000,  "raw"};
+//    sat_list.push_back(new m_satellite(geo, minimum_elevation, meteor));
 
     sat_list.push_back(new m_satellite(geo, minimum_elevation, {"ISS", &iss_tle, 145800000, 20000, "fm"}));
 }
